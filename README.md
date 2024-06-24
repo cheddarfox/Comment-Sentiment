@@ -219,3 +219,42 @@ The project relies on several Python packages and external tools. Key dependenci
 
 For a full list of dependencies, refer to the `requirements.txt` and `environment.yml` files.
 
+## Licenses and Acknowledgments
+
+### Stanford CoreNLP
+
+This project uses Stanford CoreNLP, which is licensed under the GNU General Public License (v3 or later). We gratefully acknowledge the Natural Language Processing Group at Stanford University for their work on Stanford CoreNLP.
+
+- Stanford CoreNLP: https://stanfordnlp.github.io/CoreNLP/
+- License: https://github.com/stanfordnlp/CoreNLP/blob/main/LICENSE.txt
+
+### Stanford Sentiment Treebank
+
+We use the Stanford Sentiment Treebank dataset for benchmarking our sentiment analysis. This dataset was introduced in the following paper:
+
+Socher, R., Perelygin, A., Wu, J., Chuang, J., Manning, C. D., Ng, A., & Potts, C. (2013). Recursive deep models for semantic compositionality over a sentiment treebank. In Proceedings of the 2013 conference on empirical methods in natural language processing (pp. 1631-1642).
+
+### Python Libraries
+
+This project uses several open-source Python libraries. Key libraries and their licenses include:
+
+- Anthropic: MIT License
+- OpenAI: MIT License
+- pandas: BSD 3-Clause License
+- scikit-learn: BSD 3-Clause License
+- NLTK: Apache License 2.0
+- TextBlob: MIT License
+
+For a complete list of dependencies and their licenses, please refer to the `requirements.txt` file.
+
+### Other Acknowledgments
+
+- OpenAI GPT models are used for AI-powered analysis. Usage is subject to OpenAI's use case policy and terms of service.
+- Anthropic's language models are used for AI-powered analysis. Usage is subject to Anthropic's terms of service.
+
+We are grateful to all the developers and researchers whose work has made this project possible.
+
+## Note on Usage
+
+Please ensure that your use of this project and its components complies with the respective licenses and terms of service of the included software and services.
+
