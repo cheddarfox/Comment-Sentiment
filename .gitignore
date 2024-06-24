@@ -1,0 +1,53 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Environment variables
+.env
+
+# Log files
+*.log
+
+# Zip files (usually large and generated)
+*.zip
+
+# MacOS system files
+.DS_Store
+
+# VS Code settings (optional, depending on whether you want to share these)
+.vscode/
+
+# Stanford CoreNLP data (large files that can be downloaded)
+Data/stanford-corenlp-4.5.7/
+
+# Stanford Sentiment Treebank data (if it's large and can be downloaded)
+Data/stanfordSentimentTreebank/
+Data/stanfordSentimentTreebankRaw/
+
+# Output files (if generated during runtime)
+output_*.txt
+
+# Compiled Java classes
+*.class
+
+# Jar files (usually large binaries)
+*.jar
+
+# Specific files that seem to be temporary or generated
+avltest.txt
+new_2.txt
+old_requirements.txt
+
+# Keep the requirements file (don't ignore it)
+!requirements.txt
+
+# XML files (might contain configuration, keep if needed)
+# *.xml
+
+# Temporary or backup files
+*~
+*.bak
+*.swp

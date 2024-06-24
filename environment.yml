@@ -1,0 +1,28 @@
+name: comment_sentiment
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy
+  - pandas
+  - scikit-learn
+  - nltk
+  - spacy
+  - matplotlib
+  - seaborn
+  - pip
+  - openjdk=11  # Required for Stanford CoreNLP
+  - pip:
+    - textblob
+    - openai
+    - anthropic
+    - python-dotenv
+    - python-docx
+    - PyPDF2
+    - odfpy
+    - stanfordnlp
+    - stanfordcorenlp  # Python wrapper for Stanford CoreNLP
+    - transformers  # In case you want to use more advanced NLP models
+    - torch  # Required for some NLP tasks
+    - tqdm  # Progress bars, often useful in NLP tasks
