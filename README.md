@@ -1,6 +1,6 @@
 # Comment Sentiment Analysis Project
 
-This project performs sentiment analysis on comments using various NLP tools and AI models, including Stanford NLP.
+This project performs sentiment analysis on comments using various NLP tools and AI models, including Stanford NLP, OpenAI, and Anthropic.
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
@@ -63,7 +63,27 @@ Before setting up the project, ensure you have the following installed:
 
 ## Java Setup
 
-(Java setup instructions remain the same as in the previous version)
+1. Download and install Java Development Kit (JDK) 11 or higher from [Oracle](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) or [OpenJDK](https://adoptopenjdk.net/).
+
+2. Set up the JAVA_HOME environment variable:
+   - Windows:
+     1. Right-click on 'This PC' or 'My Computer' and select 'Properties'
+     2. Click on 'Advanced system settings'
+     3. Click on 'Environment Variables'
+     4. Under 'System variables', click 'New'
+     5. Set Variable name as JAVA_HOME
+     6. Set Variable value as the path to your Java installation (e.g., C:\Program Files\Java\jdk-11)
+   - macOS/Linux:
+     Add the following to your ~/.bash_profile or ~/.zshrc:
+     ```
+     export JAVA_HOME=/path/to/your/java/home
+     export PATH=$JAVA_HOME/bin:$PATH
+     ```
+
+3. Verify the installation by opening a new terminal and typing:
+   ```
+   java -version
+   ```
 
 ## Project Structure
 
@@ -105,9 +125,85 @@ ANTHROPIC_API_KEY=your_anthropic_api_key_here
 
 Replace the placeholder values with your actual API keys.
 
+You can modify the following settings in `config.py`:
+- `MAX_CONTENT_LENGTH`: Maximum number of characters to analyze
+- `AI_PROVIDER`: Choose between 'openai' and 'anthropic' for AI analysis
+- `OPENAI_MODEL` and `ANTHROPIC_MODEL`: Specify the AI model to use
+- `OUTPUT_PATH`: Directory for saving analysis results
+- `STANFORD_CORENLP_PATH`: Path to Stanford CoreNLP installation
+
 ## Usage
 
-(Add instructions on how to run the main script and any other relevant usage information)
+The main script for this project is `comment_analyzer.py`. It can analyze text from various file formats and provide sentiment and engagement analysis along with AI-powered insights.
+
+### Analyzing a File
+
+To analyze a file, use the following command:
+
+```
+python comment_analyzer.py <path_to_file>
+```
+
+Supported file formats:
+- Text files (.txt, .md)
+- Microsoft Word documents (.docx)
+- PDF files (.pdf)
+- OpenDocument Text files (.odt)
+
+Example:
+```
+python comment_analyzer.py sample_comment.txt
+```
+
+The script will output the analysis results to the console and save them in a Markdown file in the directory specified by `OUTPUT_PATH` in `config.py`.
+
+### Output
+
+The analysis output includes:
+
+1. Sentiment Analysis:
+   - Overall Sentiment Score
+   - Interpretation (Very Negative, Negative, Neutral, Positive, Very Positive)
+   - Stanford Sentiment Score
+   - Sentence-level Sentiments
+
+2. Engagement Analysis:
+   - Overall Engagement Score (0-100)
+   - Interpretation (Very Low, Low, Moderate, High, Very High Engagement)
+   - Raw Engagement Score
+   - Text Length
+   - Counts of Likes, Dislikes, Replies, Questions, and Exclamations
+
+3. AI Analysis:
+   - Summary of overall sentiment and main topics
+   - Detailed analysis including key discussion points and recommendations
+   - Confidence score for the analysis
+
+### Benchmarking Sentiment Analysis
+
+To run the sentiment analysis benchmark, which tests the accuracy of the sentiment analysis against the Stanford Sentiment Treebank dataset, use the following command:
+
+```
+python comment_analyzer.py --benchmark
+```
+
+This will:
+- Load the Stanford Sentiment Treebank dataset
+- Analyze 100 sentences from the dataset
+- Compare the predicted sentiments with the true sentiments
+- Output the accuracy of the sentiment analysis
+
+### Note on Stanford CoreNLP
+
+The script automatically starts and stops the Stanford CoreNLP server as needed. Ensure that the `STANFORD_CORENLP_PATH` in `config.py` is correctly set to your Stanford CoreNLP installation directory.
+
+### Interpreting Results
+
+- Sentiment scores range from 0 (Very Negative) to 4 (Very Positive)
+- Engagement scores range from 0 to 100, with higher scores indicating higher engagement
+- The AI analysis provides a detailed interpretation of the text, including key points and recommendations
+
+For any issues or unexpected results, check the log files for detailed error messages and debugging information.
 
 ## Dependencies
 
