@@ -21,6 +21,7 @@ __pycache__/
 .vscode/
 
 # Stanford CoreNLP data (large files that can be downloaded)
+stanford-corenlp-4.5.7/
 Data/stanford-corenlp-4.5.7/
 
 # Stanford Sentiment Treebank data (if it's large and can be downloaded)
