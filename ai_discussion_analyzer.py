@@ -122,7 +122,7 @@ def calculate_engagement_score(text):
         normalization_factor = math.log(text_length + 1)
         
         raw_score = (likes * 1.5 + replies * 4 - dislikes * 2 + questions * 2 + exclamations) / normalization_factor
-        normalized_score = min(math.log(raw_score + 1) * 20, 100)
+        normalized_score = min(math.log(max(raw_score, 0) + 1) * 20, 100)
         
         return {
             "score": normalized_score,
@@ -204,7 +204,7 @@ Ensure your analysis is objective and based on the content provided."""
                 }
             ]
         )
-        return message.content
+        return message.content[0].text
     except Exception as e:
         logging.error(f"Error in Anthropic analysis: {str(e)}", exc_info=True)
         return "Error in Anthropic analysis"

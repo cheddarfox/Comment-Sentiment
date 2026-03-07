@@ -4,50 +4,6 @@ from ai_discussion_analyzer import analyze_sentiment_stanford
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def benchmark_sentiment_analysis(data_dir):
-    data, phrase_sentiments = load_stanford_sentiment_data(data_dir)
-    
-    logging.info(f"Loaded {len(data)} sentences and {len(phrase_sentiments)} phrase sentiments")
-
-    correct_predictions = 0
-    total_predictions = 0
-
-    for _, row in data.iterrows():
-        sentence = row['sentence']
-        sentence_id = row['sentence_id']
-        
-        logging.info(f"Processing sentence ID: {sentence_id}")
-        logging.info(f"Sentence: {sentence}")
-
-        matching_sentiment = phrase_sentiments[phrase_sentiments['phrase'] == sentence]
-        
-        if matching_sentiment.empty:
-            logging.warning(f"No exact matching sentiment found for sentence ID: {sentence_id}")
-            continue
-
-        true_sentiment = matching_sentiment.iloc[0]['sentiment_class']
-        
-        analysis_result = analyze_sentiment_stanford(sentence)
-        predicted_sentiment = interpret_sentiment(analysis_result['score'])
-        
-        logging.info(f"True sentiment: {true_sentiment}")
-        logging.info(f"Predicted sentiment: {predicted_sentiment}")
-        logging.info(f"Sentiment score: {analysis_result['score']:.4f}")
-        logging.info(f"Stanford sentiment: {analysis_result['stanford_sentiment']:.4f}")
-        logging.info("---")
-
-        if predicted_sentiment == true_sentiment:
-            correct_predictions += 1
-        total_predictions += 1
-
-        if total_predictions >= 100:  # Analyze 100 sentences
-            break
-
-    accuracy = correct_predictions / total_predictions if total_predictions > 0 else 0
-    logging.info(f"Total predictions: {total_predictions}")
-    logging.info(f"Correct predictions: {correct_predictions}")
-    logging.info(f"Sentiment Analysis Accuracy: {accuracy:.2f}")
-
 def interpret_sentiment(score):
     if score <= 0.5:
         return "Very Negative"
